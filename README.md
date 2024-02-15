@@ -5,6 +5,8 @@ CNFPD is a biodiversity index designed to provide intuitive and ecologically inf
 Camera trap networks have a number of inherent biases which make typical diversity indexes like Shannon diversity less informative. E.g. not all species are equally detectable, detections follow a poisson distribution rather than a normal distribution, and species of different body sizes or trophic levels have different maximum population densities. 
 CNFPD accounts for these idiosycrasies of camera trap data.
 
+**Language**: R
+
 
 
 ## The CNFPD diversity index behaves differently than other diversity indexes (e.g. Shannon diversity) in several key ways:
@@ -34,6 +36,8 @@ Site3 |  0.1       |  9         |  0.004
 
 ## Equation
 
+$CNFPD_{site} = \sum_{i=1}^{n}\left ( \frac{d_{site,i}}{d_{max,i}} \right )^{\frac{log0.5}{log\overline{\left ( \frac{d_{site,i}}{d_{max,i}} \right )}}}$
+
 Creating the following 4 functions in R allows you to calculate CNFPD:
 
 ```{r}
@@ -56,12 +60,66 @@ The detection rate of a species at a site as a fraction of the maximum detection
 **meanFPD = mean Fractional Population Density**
 
 A single value for each species. A measure of the skewness of the data distribution. 
+The mean FPD of all sites where the species is present, excluding sites where the species has not been detected.
 
 
 
 **NFPD = Normalized Fractional Population Density**
 
+Fractional population density normalized so that the distribution of detection rates centers around 0.5. 
+Normalization is species specific. For each species, sites with an average detection rate will have a NFPD of 0.5. 
 
+
+
+**CNFPD = Cumulative Normalized Population Density**
+
+The sum of NFPD for each species. At sites where all species are at their typical population densities, CNFPD = 1/2 species richness.
+
+
+
+**Arguments**
+
+data:           a dataframe containing species detection rates
+
+species_cols:   columns which contain species detection rates, one column per species
+
+ID_col:         column containing site ID
+
+
+
+## Usage
+
+Calculate CNFPD for a selected community of species and visualize using mapview:
+
+```{r}
+library(sf)
+library(mapview)
+
+#load dataset
+DBC <- read.csv("DBC_clean.csv")
+
+#Calculate CNFPD for only sensitive species
+Sensitive.CNFPD <- CNFPD(data=DBC, 
+                         species_cols = c(5:7, 15, 16, 17, 26, 33), 
+                         ID_col = "CAMERA_ID")
+
+#bind CNFPD values to original dataframe
+Sensitive.CNFPD <- cbind(DBC, Sensitive.CNFPD)
+
+#visualize
+Sensitive.CNFPD <- st_as_sf(Sensitive.CNFPD, coords = c("LON", "LAT"), crs=4326)
+mapview(Sensitive.CNFPD, zcol="CNFPD")
+```
+
+Intermediate steps can also be calculated independently:
+
+```{r}
+x <- FPD(DBC$BearsPerDay)
+
+x <- meanFPD(DBC$BearsPerDay)
+
+x <- NFPD(DBC$BearsPerDay)
+```
 
 
 
