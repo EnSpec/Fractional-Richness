@@ -78,12 +78,9 @@ The sum of NFPD for each species. At sites where all species are at their typica
 
 
 **Arguments**
-
-data:           a dataframe containing species detection rates
-
-species_cols:   columns which contain species detection rates, one column per species
-
-ID_col:         column containing site ID
+ + data:             a dataframe containing species detection rates
+ + species_cols:     columns which contain species detection rates, one column per species
+ + ID_col:           column containing site ID
 
 
 
@@ -120,6 +117,22 @@ x <- meanFPD(DBC$BearsPerDay)
 
 x <- NFPD(DBC$BearsPerDay)
 ```
+
+
+# Provided dataset
+
+An example dataset is available in this github which can be used to calculate CNFPD: Snapshot_DBC.csv
+
+Snapshot_DBC.csv is data from the Snapshot Wisconsin camera trap network (https://dnr.wisconsin.gov/topic/research/projects/snapshot). 
+This dataset includes detection rates of 33 species across 2218 camera locations in Wisconsin.
+Detection rates are measured as the number of detection events / the number of days the camera location was active.
+LAT/LON coordinates are coarsened for the privacy of community scientists in this publicly available dataset.
+
+**Variables**
+  + CAMERA_ID: Unique ID number of each camera location
+  +	LAT: Latitude in decimal degrees, coarsened to 2 decimal places to maintain privacy of community scientists
+  +	LON: Longitude in decimal degrees, coarsened to 1 decimal place to maintain privacy of community scientists
+  + SpeciesPerDay: One column per species. The number of times that species was detected / the number of days that camera site was active.
 
 
 # Citation
