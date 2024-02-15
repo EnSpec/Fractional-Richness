@@ -9,7 +9,8 @@ CNFPD accounts for these idiosycrasies of camera trap data.
 
 
 
-## The CNFPD diversity index behaves differently than other diversity indexes (e.g. Shannon diversity) in several key ways:
+## Index Behavior
+The CNFPD diversity index behaves differently than other diversity indexes (e.g. Shannon diversity) in several key ways:
 1. **All species are valued equally**. With Shannon Diversity, low-density or rare species have less impact on the overall diversity score. With CNFPD, all species contribute equally to the diversity score.
 2. **Diversity increases linearly with species richness**. Shannon Diversity has a plateauing curvilinear distribution, so that the resolution is reduced at higher species richness. CNFPD has a linear relationship with richness, and performs equally well at high and low species richness. When all species are at their average population densities, CNFPD is equal to ½ species richness. When all species are at their maximum population densities, CNFPD is equal to species richness. 
 3. **An increase in richness or abundance always results in an increase in diversity**. With Shannon diversity, if the abundances of species are very uneven, then a decrease in population or a complete loss of the most common species can counterintuitively result in a higher measured diversity. This is never the case with CNFPD.
@@ -132,7 +133,28 @@ LAT/LON coordinates are coarsened for the privacy of community scientists in thi
   + CAMERA_ID: Unique ID number of each camera location
   +	LAT: Latitude in decimal degrees, coarsened to 2 decimal places to maintain privacy of community scientists
   +	LON: Longitude in decimal degrees, coarsened to 1 decimal place to maintain privacy of community scientists
-  + SpeciesPerDay: One column per species. The number of times that species was detected / the number of days that camera site was active.
+  + *Species*PerDay: One column per species. The number of times that species was detected / the number of days that camera site was active.
+
+**Species**
+ + Bear - *Ursus americanus*
+ + Beaver - *Castor canadensis*
+ + Bobcat - *Lynx rufus*
+ + Cottontail - *Sylvilagus floridanus*
+ + Coyote - *Canis latrans*
+ + Deer - *Odocoileus virginianus*
+ + Fisher - *Pekania pennanti*
+ + Grey fox - *Urocyon cinereoargenteus*
+ + Grouse - *Bonasa umbellus*
+ + Mink - *Neovison vison*
+ + Opossum - *Didelphis virginiana*
+ + Porcupine - *Erethizon dorsatum*
+ + Raccoon - *Procyon lotor*
+ + Red fox - *Vulpes vulpes*
+ + Sandhill crane - *Antigone canadensis*
+ + Squirrel - *Sciuridae*
+ + Turkey - *Meleagris gallopavo*
+ + Wolf - *Canis lupus*
+ + Woodchuck - *Marmota monax*
 
 
 # Citation
