@@ -80,8 +80,9 @@ The sum of NFPD for each species. At sites where all species are at their typica
 
 **Arguments**
  + data:             a dataframe containing species detection rates
- + species_cols:     columns which contain species detection rates, one column per species
  + ID_col:           column containing site ID
+ + species_cols:     columns which contain species detection rates, one column per species
+ + species_col:      a single column containing species detection rates
 
 
 
