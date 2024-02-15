@@ -19,7 +19,7 @@ CNFPD accounts for these idiosycrasies of camera trap data.
 
 
 
-## Data requirements
+# Data requirements
 To calculate CNFPD, detection rates for multiple species at multiple sites are required. 
 Each row should contain data for one site and each column should contain detection rates for one species.
 
@@ -34,7 +34,7 @@ Site3 |  0.1       |  9         |  0.004
 
 
 
-## Equation
+# Equation
 
 $CNFPD_{site} = \sum_{i=1}^{n}\left ( \frac{d_{site,i}}{d_{max,i}} \right )^{\frac{log0.5}{log\overline{\left ( \frac{d_{site,i}}{d_{max,i}} \right )}}}$
 
@@ -87,7 +87,7 @@ ID_col:         column containing site ID
 
 
 
-## Usage
+# Usage
 
 Calculate CNFPD for a selected community of species and visualize using mapview:
 
@@ -122,6 +122,11 @@ x <- NFPD(DBC$BearsPerDay)
 ```
 
 
+# Citation
+
+For more details, or if you use CNFPD in your work, please cite:
+
+Berman, L.; Schneider, F.; Stenglein, J.; Bemowski, R.; Dean, M.; Townsend, P. (in preparation). Cumulative Normalized Fractional Population Density: a diversity index for camera trap networks. 
 
 
 
